@@ -218,6 +218,687 @@ definitions:
       updated_at:
         type: string
     type: object
+  models.Course:
+    properties:
+      category:
+        $ref: '#/definitions/models.CourseCategory'
+      category_id:
+        type: integer
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        type: string
+      duration:
+        type: integer
+      id:
+        type: integer
+      instructor:
+        $ref: '#/definitions/profile.User'
+      instructor_id:
+        type: integer
+      language:
+        type: string
+      level:
+        type: string
+      price:
+        type: integer
+      slug:
+        type: string
+      status:
+        type: string
+      thumbnail_url:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.CourseCategory:
+    properties:
+      courses:
+        items:
+          $ref: '#/definitions/models.Course'
+        type: array
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      slug:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.CourseCategoryModelResponse:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.CourseCategoryResponse:
+    properties:
+      course:
+        items:
+          $ref: '#/definitions/models.Course'
+        type: array
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      slug:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.CourseCategorySelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: From Name field
+        type: string
+    type: object
+  models.CourseCertificateResponse:
+    properties:
+      certificate_url:
+        type: string
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      enrollment:
+        $ref: '#/definitions/models.EnrollmentModelResponse'
+      id:
+        type: integer
+      issued_at:
+        $ref: '#/definitions/types.DateTime'
+      updated_at:
+        type: string
+    type: object
+  models.CourseCertificateSelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: Display name
+        type: string
+    type: object
+  models.CourseModelResponse:
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+    type: object
+  models.CourseProgressLogResponse:
+    properties:
+      completed_at:
+        $ref: '#/definitions/types.DateTime'
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      enrollment:
+        $ref: '#/definitions/models.EnrollmentModelResponse'
+      id:
+        type: integer
+      lesson:
+        $ref: '#/definitions/models.LessonModelResponse'
+      updated_at:
+        type: string
+    type: object
+  models.CourseProgressLogSelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: Display name
+        type: string
+    type: object
+  models.CourseResourceResponse:
+    properties:
+      course:
+        $ref: '#/definitions/models.CourseModelResponse'
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      file_url:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+      updated_at:
+        type: string
+      uploaded_at:
+        $ref: '#/definitions/types.DateTime'
+    type: object
+  models.CourseResourceSelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: From Title field
+        type: string
+    type: object
+  models.CourseResponse:
+    properties:
+      category:
+        $ref: '#/definitions/models.CourseCategoryModelResponse'
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        type: string
+      duration:
+        type: integer
+      id:
+        type: integer
+      instructor:
+        $ref: '#/definitions/profile.UserModelResponse'
+      language:
+        type: string
+      level:
+        type: string
+      price:
+        type: integer
+      slug:
+        type: string
+      status:
+        type: string
+      thumbnail_url:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.CourseSelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: From Title field
+        type: string
+    type: object
+  models.CourseTagModelResponse:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.CourseTagRelationResponse:
+    properties:
+      course:
+        $ref: '#/definitions/models.CourseModelResponse'
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      tag:
+        $ref: '#/definitions/models.CourseTagModelResponse'
+      updated_at:
+        type: string
+    type: object
+  models.CourseTagRelationSelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: Display name
+        type: string
+    type: object
+  models.CourseTagResponse:
+    properties:
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.CourseTagSelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: From Name field
+        type: string
+    type: object
+  models.CreateCourseCategoryRequest:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      slug:
+        type: string
+    type: object
+  models.CreateCourseCertificateRequest:
+    properties:
+      certificate_url:
+        type: string
+      enrollment_id:
+        type: integer
+      issued_at:
+        type: string
+    type: object
+  models.CreateCourseProgressLogRequest:
+    properties:
+      completed_at:
+        type: string
+      enrollment_id:
+        type: integer
+      lesson_id:
+        type: integer
+    type: object
+  models.CreateCourseRequest:
+    properties:
+      category_id:
+        type: integer
+      description:
+        type: string
+      duration:
+        type: integer
+      instructor_id:
+        type: integer
+      language:
+        type: string
+      level:
+        type: string
+      price:
+        type: integer
+      slug:
+        type: string
+      status:
+        type: string
+      thumbnail_url:
+        type: string
+      title:
+        type: string
+    type: object
+  models.CreateCourseResourceRequest:
+    properties:
+      course_id:
+        type: integer
+      file_url:
+        type: string
+      title:
+        type: string
+      uploaded_at:
+        type: string
+    type: object
+  models.CreateCourseTagRelationRequest:
+    properties:
+      course_id:
+        type: integer
+      tag_id:
+        type: integer
+    type: object
+  models.CreateCourseTagRequest:
+    properties:
+      name:
+        type: string
+    type: object
+  models.CreateEnrollmentRequest:
+    properties:
+      completed:
+        type: boolean
+      course_id:
+        type: integer
+      enrolled_at:
+        type: string
+      progress:
+        type: integer
+      student_id:
+        type: integer
+    type: object
+  models.CreateLessonRequest:
+    properties:
+      content:
+        type: string
+      course_id:
+        type: integer
+      duration:
+        type: integer
+      order_number:
+        type: integer
+      title:
+        type: string
+      video_url:
+        type: string
+    type: object
+  models.CreatePaymentRequest:
+    properties:
+      amount:
+        type: integer
+      course_id:
+        type: integer
+      payment_method:
+        $ref: '#/definitions/models.PaymentMethod'
+      payment_status:
+        $ref: '#/definitions/models.PaymentStatus'
+      transaction_id:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.CreateReviewRequest:
+    properties:
+      comment:
+        type: string
+      course_id:
+        type: integer
+      rating:
+        type: integer
+      student_id:
+        type: integer
+    type: object
+  models.EnrollmentModelResponse:
+    properties:
+      id:
+        type: integer
+      name:
+        description: Display name
+        type: string
+    type: object
+  models.EnrollmentResponse:
+    properties:
+      completed:
+        type: boolean
+      course:
+        $ref: '#/definitions/models.CourseModelResponse'
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      enrolled_at:
+        $ref: '#/definitions/types.DateTime'
+      id:
+        type: integer
+      progress:
+        type: integer
+      student:
+        $ref: '#/definitions/profile.UserModelResponse'
+      updated_at:
+        type: string
+    type: object
+  models.EnrollmentSelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: Display name
+        type: string
+    type: object
+  models.LessonModelResponse:
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+    type: object
+  models.LessonResponse:
+    properties:
+      content:
+        type: string
+      course:
+        $ref: '#/definitions/models.CourseModelResponse'
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      duration:
+        type: integer
+      id:
+        type: integer
+      order_number:
+        type: integer
+      title:
+        type: string
+      updated_at:
+        type: string
+      video_url:
+        type: string
+    type: object
+  models.LessonSelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: From Title field
+        type: string
+    type: object
+  models.PaymentMethod:
+    enum:
+    - credit_card
+    - paypal
+    - bank_transfer
+    type: string
+    x-enum-varnames:
+    - PaymentMethodCreditCard
+    - PaymentMethodPaypal
+    - PaymentMethodBankTransfer
+  models.PaymentResponse:
+    properties:
+      amount:
+        type: integer
+      course:
+        $ref: '#/definitions/models.CourseModelResponse'
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      payment_method:
+        $ref: '#/definitions/models.PaymentMethod'
+      payment_status:
+        $ref: '#/definitions/models.PaymentStatus'
+      transaction_id:
+        type: string
+      updated_at:
+        type: string
+      user:
+        $ref: '#/definitions/profile.UserModelResponse'
+    type: object
+  models.PaymentSelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: Display name
+        type: string
+    type: object
+  models.PaymentStatus:
+    enum:
+    - pending
+    - completed
+    - failed
+    type: string
+    x-enum-varnames:
+    - PaymentStatusPending
+    - PaymentStatusCompleted
+    - PaymentStatusFailed
+  models.ReviewResponse:
+    properties:
+      comment:
+        type: string
+      course:
+        $ref: '#/definitions/models.CourseModelResponse'
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      rating:
+        type: integer
+      student:
+        $ref: '#/definitions/profile.UserModelResponse'
+      updated_at:
+        type: string
+    type: object
+  models.ReviewSelectOption:
+    properties:
+      id:
+        type: integer
+      name:
+        description: Display name
+        type: string
+    type: object
+  models.UpdateCourseCategoryRequest:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+      slug:
+        type: string
+    type: object
+  models.UpdateCourseCertificateRequest:
+    properties:
+      certificate_url:
+        type: string
+      enrollment_id:
+        type: integer
+      issued_at:
+        type: string
+    type: object
+  models.UpdateCourseProgressLogRequest:
+    properties:
+      completed_at:
+        type: string
+      enrollment_id:
+        type: integer
+      lesson_id:
+        type: integer
+    type: object
+  models.UpdateCourseRequest:
+    properties:
+      category_id:
+        type: integer
+      description:
+        type: string
+      duration:
+        type: integer
+      instructor_id:
+        type: integer
+      language:
+        type: string
+      level:
+        type: string
+      price:
+        type: integer
+      slug:
+        type: string
+      status:
+        type: string
+      thumbnail_url:
+        type: string
+      title:
+        type: string
+    type: object
+  models.UpdateCourseResourceRequest:
+    properties:
+      course_id:
+        type: integer
+      file_url:
+        type: string
+      title:
+        type: string
+      uploaded_at:
+        type: string
+    type: object
+  models.UpdateCourseTagRelationRequest:
+    properties:
+      course_id:
+        type: integer
+      tag_id:
+        type: integer
+    type: object
+  models.UpdateCourseTagRequest:
+    properties:
+      name:
+        type: string
+    type: object
+  models.UpdateEnrollmentRequest:
+    properties:
+      completed:
+        type: boolean
+      course_id:
+        type: integer
+      enrolled_at:
+        type: string
+      progress:
+        type: integer
+      student_id:
+        type: integer
+    type: object
+  models.UpdateLessonRequest:
+    properties:
+      content:
+        type: string
+      course_id:
+        type: integer
+      duration:
+        type: integer
+      order_number:
+        type: integer
+      title:
+        type: string
+      video_url:
+        type: string
+    type: object
+  models.UpdatePaymentRequest:
+    properties:
+      amount:
+        type: integer
+      course_id:
+        type: integer
+      payment_method:
+        $ref: '#/definitions/models.PaymentMethod'
+      payment_status:
+        $ref: '#/definitions/models.PaymentStatus'
+      transaction_id:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.UpdateReviewRequest:
+    properties:
+      comment:
+        type: string
+      course_id:
+        type: integer
+      rating:
+        type: integer
+      student_id:
+        type: integer
+    type: object
   oauth.ErrorResponse:
     properties:
       error:
@@ -281,6 +962,21 @@ definitions:
       roleId:
         type: integer
       updatedAt:
+        type: string
+      username:
+        type: string
+    type: object
+  profile.UserModelResponse:
+    properties:
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: integer
+      last_name:
+        type: string
+      phone:
         type: string
       username:
         type: string
@@ -407,6 +1103,11 @@ definitions:
     required:
     - id
     type: object
+  types.DateTime:
+    properties:
+      time.Time:
+        type: string
+    type: object
   types.ErrorResponse:
     properties:
       details: {}
@@ -431,6 +1132,14 @@ definitions:
         type: integer
       total_pages:
         type: integer
+    type: object
+  types.SuccessResponse:
+    properties:
+      data: {}
+      message:
+        type: string
+      success:
+        type: boolean
     type: object
   websocket.ErrorResponse:
     properties:
@@ -1126,6 +1835,1842 @@ paths:
       summary: Revoke permission from role
       tags:
       - Core/Authorization
+  /course-categories:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of course-categories
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,name,slug,description,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List course-categories
+      tags:
+      - App/CourseCategory
+    post:
+      consumes:
+      - application/json
+      description: Create a new CourseCategory with the input payload
+      parameters:
+      - description: Create CourseCategory request
+        in: body
+        name: course-categories
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateCourseCategoryRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.CourseCategoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new CourseCategory
+      tags:
+      - App/CourseCategory
+  /course-categories/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a CourseCategory by its id
+      parameters:
+      - description: CourseCategory id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a CourseCategory
+      tags:
+      - App/CourseCategory
+    get:
+      consumes:
+      - application/json
+      description: Get a CourseCategory by its id
+      parameters:
+      - description: CourseCategory id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseCategoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a CourseCategory
+      tags:
+      - App/CourseCategory
+    put:
+      consumes:
+      - application/json
+      description: Update a CourseCategory by its id
+      parameters:
+      - description: CourseCategory id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update CourseCategory request
+        in: body
+        name: course-categories
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateCourseCategoryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseCategoryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a CourseCategory
+      tags:
+      - App/CourseCategory
+  /course-categories/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all course-categories with id and name
+        only (for dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CourseCategorySelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all course-categories for select options
+      tags:
+      - App/CourseCategory
+  /course-certificates:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of course-certificates
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,certificate_url,issued_at,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List course-certificates
+      tags:
+      - App/CourseCertificate
+    post:
+      consumes:
+      - application/json
+      description: Create a new CourseCertificate with the input payload
+      parameters:
+      - description: Create CourseCertificate request
+        in: body
+        name: course-certificates
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateCourseCertificateRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.CourseCertificateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new CourseCertificate
+      tags:
+      - App/CourseCertificate
+  /course-certificates/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a CourseCertificate by its id
+      parameters:
+      - description: CourseCertificate id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a CourseCertificate
+      tags:
+      - App/CourseCertificate
+    get:
+      consumes:
+      - application/json
+      description: Get a CourseCertificate by its id
+      parameters:
+      - description: CourseCertificate id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseCertificateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a CourseCertificate
+      tags:
+      - App/CourseCertificate
+    put:
+      consumes:
+      - application/json
+      description: Update a CourseCertificate by its id
+      parameters:
+      - description: CourseCertificate id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update CourseCertificate request
+        in: body
+        name: course-certificates
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateCourseCertificateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseCertificateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a CourseCertificate
+      tags:
+      - App/CourseCertificate
+  /course-certificates/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all course-certificates with id and name
+        only (for dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CourseCertificateSelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all course-certificates for select options
+      tags:
+      - App/CourseCertificate
+  /course-progress-logs:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of course-progress-logs
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,completed_at,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List course-progress-logs
+      tags:
+      - App/CourseProgressLog
+    post:
+      consumes:
+      - application/json
+      description: Create a new CourseProgressLog with the input payload
+      parameters:
+      - description: Create CourseProgressLog request
+        in: body
+        name: course-progress-logs
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateCourseProgressLogRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.CourseProgressLogResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new CourseProgressLog
+      tags:
+      - App/CourseProgressLog
+  /course-progress-logs/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a CourseProgressLog by its id
+      parameters:
+      - description: CourseProgressLog id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a CourseProgressLog
+      tags:
+      - App/CourseProgressLog
+    get:
+      consumes:
+      - application/json
+      description: Get a CourseProgressLog by its id
+      parameters:
+      - description: CourseProgressLog id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseProgressLogResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a CourseProgressLog
+      tags:
+      - App/CourseProgressLog
+    put:
+      consumes:
+      - application/json
+      description: Update a CourseProgressLog by its id
+      parameters:
+      - description: CourseProgressLog id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update CourseProgressLog request
+        in: body
+        name: course-progress-logs
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateCourseProgressLogRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseProgressLogResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a CourseProgressLog
+      tags:
+      - App/CourseProgressLog
+  /course-progress-logs/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all course-progress-logs with id and name
+        only (for dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CourseProgressLogSelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all course-progress-logs for select options
+      tags:
+      - App/CourseProgressLog
+  /course-resources:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of course-resources
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,file_url,title,uploaded_at,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List course-resources
+      tags:
+      - App/CourseResource
+    post:
+      consumes:
+      - application/json
+      description: Create a new CourseResource with the input payload
+      parameters:
+      - description: Create CourseResource request
+        in: body
+        name: course-resources
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateCourseResourceRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.CourseResourceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new CourseResource
+      tags:
+      - App/CourseResource
+  /course-resources/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a CourseResource by its id
+      parameters:
+      - description: CourseResource id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a CourseResource
+      tags:
+      - App/CourseResource
+    get:
+      consumes:
+      - application/json
+      description: Get a CourseResource by its id
+      parameters:
+      - description: CourseResource id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseResourceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a CourseResource
+      tags:
+      - App/CourseResource
+    put:
+      consumes:
+      - application/json
+      description: Update a CourseResource by its id
+      parameters:
+      - description: CourseResource id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update CourseResource request
+        in: body
+        name: course-resources
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateCourseResourceRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseResourceResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a CourseResource
+      tags:
+      - App/CourseResource
+  /course-resources/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all course-resources with id and name
+        only (for dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CourseResourceSelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all course-resources for select options
+      tags:
+      - App/CourseResource
+  /course-tag-relations:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of course-tag-relations
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List course-tag-relations
+      tags:
+      - App/CourseTagRelation
+    post:
+      consumes:
+      - application/json
+      description: Create a new CourseTagRelation with the input payload
+      parameters:
+      - description: Create CourseTagRelation request
+        in: body
+        name: course-tag-relations
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateCourseTagRelationRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.CourseTagRelationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new CourseTagRelation
+      tags:
+      - App/CourseTagRelation
+  /course-tag-relations/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a CourseTagRelation by its id
+      parameters:
+      - description: CourseTagRelation id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a CourseTagRelation
+      tags:
+      - App/CourseTagRelation
+    get:
+      consumes:
+      - application/json
+      description: Get a CourseTagRelation by its id
+      parameters:
+      - description: CourseTagRelation id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseTagRelationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a CourseTagRelation
+      tags:
+      - App/CourseTagRelation
+    put:
+      consumes:
+      - application/json
+      description: Update a CourseTagRelation by its id
+      parameters:
+      - description: CourseTagRelation id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update CourseTagRelation request
+        in: body
+        name: course-tag-relations
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateCourseTagRelationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseTagRelationResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a CourseTagRelation
+      tags:
+      - App/CourseTagRelation
+  /course-tag-relations/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all course-tag-relations with id and name
+        only (for dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CourseTagRelationSelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all course-tag-relations for select options
+      tags:
+      - App/CourseTagRelation
+  /course-tags:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of course-tags
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,name,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List course-tags
+      tags:
+      - App/CourseTag
+    post:
+      consumes:
+      - application/json
+      description: Create a new CourseTag with the input payload
+      parameters:
+      - description: Create CourseTag request
+        in: body
+        name: course-tags
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateCourseTagRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.CourseTagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new CourseTag
+      tags:
+      - App/CourseTag
+  /course-tags/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a CourseTag by its id
+      parameters:
+      - description: CourseTag id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a CourseTag
+      tags:
+      - App/CourseTag
+    get:
+      consumes:
+      - application/json
+      description: Get a CourseTag by its id
+      parameters:
+      - description: CourseTag id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseTagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a CourseTag
+      tags:
+      - App/CourseTag
+    put:
+      consumes:
+      - application/json
+      description: Update a CourseTag by its id
+      parameters:
+      - description: CourseTag id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update CourseTag request
+        in: body
+        name: course-tags
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateCourseTagRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseTagResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a CourseTag
+      tags:
+      - App/CourseTag
+  /course-tags/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all course-tags with id and name only
+        (for dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CourseTagSelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all course-tags for select options
+      tags:
+      - App/CourseTag
+  /courses:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of courses
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,title,slug,description,price,level,language,thumbnail_url,status,duration,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List courses
+      tags:
+      - App/Course
+    post:
+      consumes:
+      - application/json
+      description: Create a new Course with the input payload
+      parameters:
+      - description: Create Course request
+        in: body
+        name: courses
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateCourseRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.CourseResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new Course
+      tags:
+      - App/Course
+  /courses/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a Course by its id
+      parameters:
+      - description: Course id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a Course
+      tags:
+      - App/Course
+    get:
+      consumes:
+      - application/json
+      description: Get a Course by its id
+      parameters:
+      - description: Course id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a Course
+      tags:
+      - App/Course
+    put:
+      consumes:
+      - application/json
+      description: Update a Course by its id
+      parameters:
+      - description: Course id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Course request
+        in: body
+        name: courses
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateCourseRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CourseResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a Course
+      tags:
+      - App/Course
+  /courses/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all courses with id and name only (for
+        dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.CourseSelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all courses for select options
+      tags:
+      - App/Course
+  /enrollments:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of enrollments
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,enrolled_at,progress,completed,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List enrollments
+      tags:
+      - App/Enrollment
+    post:
+      consumes:
+      - application/json
+      description: Create a new Enrollment with the input payload
+      parameters:
+      - description: Create Enrollment request
+        in: body
+        name: enrollments
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateEnrollmentRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.EnrollmentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new Enrollment
+      tags:
+      - App/Enrollment
+  /enrollments/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a Enrollment by its id
+      parameters:
+      - description: Enrollment id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a Enrollment
+      tags:
+      - App/Enrollment
+    get:
+      consumes:
+      - application/json
+      description: Get a Enrollment by its id
+      parameters:
+      - description: Enrollment id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.EnrollmentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a Enrollment
+      tags:
+      - App/Enrollment
+    put:
+      consumes:
+      - application/json
+      description: Update a Enrollment by its id
+      parameters:
+      - description: Enrollment id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Enrollment request
+        in: body
+        name: enrollments
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateEnrollmentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.EnrollmentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a Enrollment
+      tags:
+      - App/Enrollment
+  /enrollments/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all enrollments with id and name only
+        (for dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.EnrollmentSelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all enrollments for select options
+      tags:
+      - App/Enrollment
+  /lessons:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of lessons
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,title,content,video_url,duration,order_number,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List lessons
+      tags:
+      - App/Lesson
+    post:
+      consumes:
+      - application/json
+      description: Create a new Lesson with the input payload
+      parameters:
+      - description: Create Lesson request
+        in: body
+        name: lessons
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateLessonRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.LessonResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new Lesson
+      tags:
+      - App/Lesson
+  /lessons/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a Lesson by its id
+      parameters:
+      - description: Lesson id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a Lesson
+      tags:
+      - App/Lesson
+    get:
+      consumes:
+      - application/json
+      description: Get a Lesson by its id
+      parameters:
+      - description: Lesson id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.LessonResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a Lesson
+      tags:
+      - App/Lesson
+    put:
+      consumes:
+      - application/json
+      description: Update a Lesson by its id
+      parameters:
+      - description: Lesson id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Lesson request
+        in: body
+        name: lessons
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateLessonRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.LessonResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a Lesson
+      tags:
+      - App/Lesson
+  /lessons/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all lessons with id and name only (for
+        dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.LessonSelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all lessons for select options
+      tags:
+      - App/Lesson
   /media:
     get:
       description: Get a paginated list of media items
@@ -1431,6 +3976,210 @@ paths:
       summary: Google OAuth callback
       tags:
       - Core/OAuth
+  /payments:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of payments
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,amount,payment_method,payment_status,transaction_id,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List payments
+      tags:
+      - App/Payment
+    post:
+      consumes:
+      - application/json
+      description: Create a new Payment with the input payload
+      parameters:
+      - description: Create Payment request
+        in: body
+        name: payments
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreatePaymentRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.PaymentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new Payment
+      tags:
+      - App/Payment
+  /payments/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a Payment by its id
+      parameters:
+      - description: Payment id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a Payment
+      tags:
+      - App/Payment
+    get:
+      consumes:
+      - application/json
+      description: Get a Payment by its id
+      parameters:
+      - description: Payment id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaymentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a Payment
+      tags:
+      - App/Payment
+    put:
+      consumes:
+      - application/json
+      description: Update a Payment by its id
+      parameters:
+      - description: Payment id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Payment request
+        in: body
+        name: payments
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdatePaymentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PaymentResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a Payment
+      tags:
+      - App/Payment
+  /payments/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all payments with id and name only (for
+        dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PaymentSelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all payments for select options
+      tags:
+      - App/Payment
   /profile:
     get:
       consumes:
@@ -1570,6 +4319,210 @@ paths:
       summary: Update profile password from Authenticated User Token
       tags:
       - Core/Profile
+  /reviews:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of reviews
+      parameters:
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Number of items per page
+        in: query
+        name: limit
+        type: integer
+      - description: Sort field (id, created_at, updated_at,rating,comment,)
+        in: query
+        name: sort
+        type: string
+      - description: Sort order (asc, desc)
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.PaginatedResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List reviews
+      tags:
+      - App/Review
+    post:
+      consumes:
+      - application/json
+      description: Create a new Review with the input payload
+      parameters:
+      - description: Create Review request
+        in: body
+        name: reviews
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateReviewRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.ReviewResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Create a new Review
+      tags:
+      - App/Review
+  /reviews/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a Review by its id
+      parameters:
+      - description: Review id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Delete a Review
+      tags:
+      - App/Review
+    get:
+      consumes:
+      - application/json
+      description: Get a Review by its id
+      parameters:
+      - description: Review id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ReviewResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Get a Review
+      tags:
+      - App/Review
+    put:
+      consumes:
+      - application/json
+      description: Update a Review by its id
+      parameters:
+      - description: Review id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Review request
+        in: body
+        name: reviews
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateReviewRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ReviewResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: Update a Review
+      tags:
+      - App/Review
+  /reviews/all:
+    get:
+      consumes:
+      - application/json
+      description: Get a simplified list of all reviews with id and name only (for
+        dropdowns/select boxes)
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.ReviewSelectOption'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/types.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      - BearerAuth: []
+      summary: List all reviews for select options
+      tags:
+      - App/Review
   /scheduler/stats:
     get:
       produces:

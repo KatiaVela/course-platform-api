@@ -1,6 +1,17 @@
 package app
 
 import (
+	"base/app/course_categories"
+	"base/app/course_certificates"
+	"base/app/course_progress_logs"
+	"base/app/course_resources"
+	"base/app/course_tag_relations"
+	"base/app/course_tags"
+	"base/app/courses"
+	"base/app/enrollments"
+	"base/app/lessons"
+	"base/app/payments"
+	"base/app/reviews"
 	"base/core/app/profile"
 	"base/core/database"
 	"base/core/module"
@@ -14,6 +25,38 @@ type AppModules struct{}
 func (am *AppModules) GetAppModules(deps module.Dependencies) map[string]module.Module {
 	modules := make(map[string]module.Module)
 
+	// Course_categories module
+	modules["course_categories"] = course_categories.Init(deps)
+
+	// Courses module
+	modules["courses"] = courses.Init(deps)
+
+	// Lessons module
+	modules["lessons"] = lessons.Init(deps)
+
+	// Enrollments module
+	modules["enrollments"] = enrollments.Init(deps)
+
+	// Reviews module
+	modules["reviews"] = reviews.Init(deps)
+
+	// Course_tags module
+	modules["course_tags"] = course_tags.Init(deps)
+
+	// Course_tag_relations module
+	modules["course_tag_relations"] = course_tag_relations.Init(deps)
+
+	// Course_resources module
+	modules["course_resources"] = course_resources.Init(deps)
+
+	// Course_progress_logs module
+	modules["course_progress_logs"] = course_progress_logs.Init(deps)
+
+	// Payments module
+	modules["payments"] = payments.Init(deps)
+
+	// Course_certificates module
+	modules["course_certificates"] = course_certificates.Init(deps)
 	return modules
 }
 
